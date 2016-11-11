@@ -10,30 +10,34 @@ void receiveCommandEvent(int numBytes);
 void execCommandEvent();
 
 void setup() {
-  Wire.begin(MOTOR_ADDRESS);
+  Wire.begin(MOTOR_SLAVE_ADDRESS);
   Wire.onReceive(receiveCommandEvent);
   Wire.onRequest(execCommandEvent);
   Serial.begin(9600);
   delay(1000);
-  Serial.write("Ready to work...");
+  Serial.println("Ready to work...");
 }
 
 void loop() {
 }
 
 void receiveCommandEvent(int numBytes) {
-  Serial.write("receiveCommandEvent");
+  Serial.println("receiveCommandEvent");
   unsigned int i = 0;
   unsigned char buffer[COMMAND_LENGTH];
 
   while (Wire.available()) {
-    if (i < COMMAND_LENGTH) {
+    if (i < COMMAND_LENGTH && !haveCommand) {
         buffer[i] = Wire.read();
     } else {
         // if we receive more data then allowed just throw it away
         Wire.read();
     }
     i++;
+  }
+  if (haveCommand) {
+    Serial.println("Already have command, ignore");
+    return;
   }
   currentCommand.xFrom = buffer[0];
   currentCommand.yFrom = buffer[1];
@@ -43,29 +47,27 @@ void receiveCommandEvent(int numBytes) {
   currentCommand.rTo = buffer[5];
 
   haveCommand = true;
-  Serial.write("Command received!");
+  Serial.println("Command received!");
 }
 
 void execCommandEvent() {
-    Serial.write("execCommandEvent");
+    Serial.println("execCommandEvent");
     if (!haveCommand) {
-        Serial.write("There is no current programm!");
-        MotorCtrlTransmitStatuses returnCode = STATE_ERROR_EMPTY_CMD;
-        Wire.write(returnCode);
+        Serial.println("There is no current programm!");
+        Wire.write(STATE_ERROR_EMPTY_CMD);
 
         return;
     }
-    Serial.write("programm: ");
-    Serial.write(currentCommand.xFrom);
-    Serial.write(currentCommand.yFrom);
-    Serial.write(currentCommand.xTo);
-    Serial.write(currentCommand.yTo);
-    Serial.write(currentCommand.rFrom);
-    Serial.write(currentCommand.rTo);
+    Serial.println("programm: ");
+    Serial.println(currentCommand.xFrom);
+    Serial.println(currentCommand.yFrom);
+    Serial.println(currentCommand.xTo);
+    Serial.println(currentCommand.yTo);
+    Serial.println(currentCommand.rFrom);
+    Serial.println(currentCommand.rTo);
     delay(2000);
     haveCommand = false;
-    Serial.write("Command executed!");
+    Serial.println("Command executed!");
 
-    MotorCtrlTransmitStatuses returnCode = STATE_OK;
-    Wire.write(returnCode);
+    Wire.write(STATE_OK);
 }

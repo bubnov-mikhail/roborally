@@ -1,5 +1,3 @@
-enum MotorCtrlTransmitStatuses {
-    STATE_OK,
-    STATE_ERROR_EMPTY_CMD,
-    STATE_ERROR_UNKNOWN,
-};
+#define STATE_OK 0
+#define STATE_ERROR_EMPTY_CMD 1
+#define STATE_ERROR_UNKNOWN 2

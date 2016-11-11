@@ -1,1 +1,1 @@
-#define MOTOR_ADDRESS 8
+#define MOTOR_SLAVE_ADDRESS 8
