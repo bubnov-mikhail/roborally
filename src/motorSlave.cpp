@@ -11,7 +11,7 @@ void setup() {
   Wire.onReceive(receiveCommandEvent);
   Serial.begin(9600);
   delay(1000);
-  Serial.write("Ready...");
+  Serial.write("Ready to work...");
 }
 
 void loop() {
