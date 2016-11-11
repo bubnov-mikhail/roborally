@@ -48,6 +48,13 @@ void receiveCommandEvent(int numBytes) {
 
 void execCommandEvent() {
     Serial.write("execCommandEvent");
+    if (!haveCommand) {
+        Serial.write("There is no current programm!");
+        MotorCtrlTransmitStatuses returnCode = STATE_ERROR_EMPTY_CMD;
+        Wire.write(returnCode);
+
+        return;
+    }
     Serial.write("programm: ");
     Serial.write(currentCommand.xFrom);
     Serial.write(currentCommand.yFrom);
@@ -56,9 +63,9 @@ void execCommandEvent() {
     Serial.write(currentCommand.rFrom);
     Serial.write(currentCommand.rTo);
     delay(2000);
-    haveCommand = true;
+    haveCommand = false;
     Serial.write("Command executed!");
-    
+
     MotorCtrlTransmitStatuses returnCode = STATE_OK;
     Wire.write(returnCode);
 }
