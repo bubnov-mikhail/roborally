@@ -1,5 +1,5 @@
-typedef struct {
-  byte xFrom, yFrom, xTo, yTo, rFrom, rTo;
-} MotorCommand;
+#define COMMAND_LENGTH 6
 
-byte lastCommand[6];
+struct MotorCommand {
+  unsigned char xFrom, yFrom, xTo, yTo, rFrom, rTo;
+};
