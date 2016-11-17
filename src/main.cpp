@@ -1,8 +1,8 @@
 #include <Arduino.h>
 #include <Wire.h>
-#include "motorCommand.h"
-#include "motorCtrlTransmitStatuses.h"
-#include "motorAddress.h"
+#include <motorCommand.h>
+#include <motorCtrlTransmitStatuses.h>
+#include <motorAddress.h>
 
 void sendCommand(MotorCommand currentCommand);
 
@@ -40,6 +40,10 @@ void sendCommand(MotorCommand currentCommand) {
           digitalWrite(LED_BUILTIN, LOW);
           delay(200);
         }
+        break;
+      case STATE_CALIBRATING:
+        delay(3000);
+        sendCommand(currentCommand);
         break;
       case STATE_ERROR_EMPTY_CMD:
         while (true) {

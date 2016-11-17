@@ -1,14 +1,14 @@
 #include <Arduino.h>
 #include <Wire.h>
 #include <AFMotor.h>
-#include "motorCommand.h"
-#include "motorCtrlTransmitStatuses.h"
-#include "motorAddress.h"
+#include <motorSlave.h>
+#include <motorCommand.h>
+#include <motorCtrlTransmitStatuses.h>
+#include <motorAddress.h>
 
 volatile bool haveCommand = false;
+volatile bool calibrating = true;
 volatile MotorCommand currentCommand;
-void receiveCommandEvent(int numBytes);
-void execCommandEvent();
 
 void setup() {
   Wire.begin(MOTOR_SLAVE_ADDRESS);
@@ -28,7 +28,7 @@ void receiveCommandEvent(int numBytes) {
   unsigned char buffer[COMMAND_LENGTH];
 
   while (Wire.available()) {
-    if (i < COMMAND_LENGTH && !haveCommand) {
+    if (i < COMMAND_LENGTH && !haveCommand && !calibrating) {
         buffer[i] = Wire.read();
     } else {
         // if we receive more data then allowed just throw it away
@@ -38,6 +38,9 @@ void receiveCommandEvent(int numBytes) {
   }
   if (haveCommand) {
     Serial.println("Already have command, ignore");
+    return;
+  } else if (calibrating) {
+    Serial.println("Calibrating, ignore");
     return;
   }
   currentCommand.xFrom = buffer[0];
@@ -53,6 +56,12 @@ void receiveCommandEvent(int numBytes) {
 
 void execCommandEvent() {
     Serial.println("execCommandEvent");
+    if (calibrating) {
+        Serial.println("Calibrating!");
+        Wire.write(STATE_CALIBRATING);
+
+        return;
+    }
     if (!haveCommand) {
         Serial.println("There is no current programm!");
         Wire.write(STATE_ERROR_EMPTY_CMD);
