@@ -15,11 +15,28 @@ void setup() {
   Wire.onReceive(receiveCommandEvent);
   Wire.onRequest(execCommandEvent);
   Serial.begin(9600);
-  delay(1000);
   Serial.println("Ready to work...");
+  calibrate();
 }
 
 void loop() {
+}
+
+void calibrate() {
+  pinMode(SENSORS_ENABLE_PIN, OUTPUT);
+  pinMode(STEP_PIN_X, INPUT);
+  digitalWrite(SENSORS_ENABLE_PIN, HIGH);
+  pinMode(INTERRUPT_PIN, INPUT_PULLUP);
+  attachInterrupt(digitalPinToInterrupt(INTERRUPT_PIN), onInterrupt, CHANGE);
+  while (true) {
+
+  }
+  calibrating = false;
+  Serial.println("Calibrating done");
+}
+
+void onInterrupt() {
+  digitalWrite(13, analogRead(STEP_PIN_X) > 512);
 }
 
 void receiveCommandEvent(int numBytes) {
