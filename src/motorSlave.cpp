@@ -5,6 +5,7 @@
 #include <motorCtrlTransmitStatuses.h>
 #include <motorAddress.h>
 #include <MotorAxis.h>
+#include <AFMotor.h>
 
 volatile bool haveCommand = false;
 volatile bool calibrating = true;
