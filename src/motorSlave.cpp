@@ -9,8 +9,10 @@
 volatile bool haveCommand = false;
 volatile bool calibrating = true;
 volatile MotorCommand currentCommand;
-MotorAxis motorAxisX(1, STEP_PIN_X, STOP_PIN_X, 12);
-MotorAxis motorAxisY(2, STEP_PIN_Y, STOP_PIN_Y, 16);
+AF_DCMotor motorX(1);
+AF_DCMotor motorY(2);
+MotorAxis motorAxisX(&motorX, STEP_PIN_X, STOP_PIN_X, 12);
+MotorAxis motorAxisY(&motorY, STEP_PIN_Y, STOP_PIN_Y, 16);
 
 void setup()
 {
@@ -97,7 +99,7 @@ void doExecCommand()
     // Move to "From"
     motorAxisX.moveTo(currentCommand.xFrom);
     motorAxisY.moveTo(currentCommand.yFrom);
-    while (!motorAxisX.isRachedTarget() || !motorAxisY.isRachedTarget()) {}
+    while (!motorAxisX.isReachedTarget() || !motorAxisY.isReachedTarget()) {}
 
     /*
     * @todo Grab, Rotate, Ungrab...
@@ -106,7 +108,7 @@ void doExecCommand()
     // Move to "To"
     motorAxisX.moveTo(currentCommand.xTo);
     motorAxisY.moveTo(currentCommand.yTo);
-    while (!motorAxisX.isRachedTarget() || !motorAxisY.isRachedTarget()) {}
+    while (!motorAxisX.isReachedTarget() || !motorAxisY.isReachedTarget()) {}
 
     detachInterrupt(digitalPinToInterrupt(INTERRUPT_PIN));
     digitalWrite(SENSORS_ENABLE_PIN, LOW);

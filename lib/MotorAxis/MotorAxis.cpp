@@ -1,14 +1,18 @@
+#include <Arduino.h>
 #include <MotorAxis.h>
+#include <AFMotor.h>
 
-MotorAxis::MotorAxis(uint8_t motornum, uint8_t _stepPin, uint8_t _stopPin, uint8_t _maxCoord)
+MotorAxis::MotorAxis(AF_DCMotor* _motor, uint8_t _stepPin, uint8_t _stopPin, uint8_t _maxCoord)
 {
-    pinMode(stepPin, INPUT);
-    pinMode(stopPin, INPUT);
     currentCoord = maxCoord + 10;
     maxCoord = _maxCoord;
     stepPin = _stepPin;
     stopPin = _stopPin;
-    motor = AF_DCMotor motor(motornum);
+    lastStepPinState = false;
+    lastStopPinState = false;
+    motor = _motor;
+    pinMode(stepPin, INPUT);
+    pinMode(stopPin, INPUT);
 }
 
 void MotorAxis::moveTo(uint8_t coord)
@@ -20,9 +24,9 @@ void MotorAxis::moveTo(uint8_t coord)
 bool MotorAxis::isReachedTarget(void)
 {
     if (targetCoord == currentCoord) {
-        motor.setSpeed(0);
-        motor.run(BREAK);
-        motor.run(RELEASE);
+        motor->setSpeed(0);
+        motor->run(BRAKE);
+        motor->run(RELEASE);
 
         return true;
     }
@@ -56,17 +60,18 @@ void MotorAxis::checkPins(void)
         return;
     }
 
+    uint8_t dist;
     if (targetCoord > currentCoord) {
-        motor.run(FORWARD);
-        uint8_t dist = targetCoord - currentCoord;
+        motor->run(FORWARD);
+        dist = targetCoord - currentCoord;
     } else {
-        motor.run(BACKWARD);
-        uint8_t dist = currentCoord - targetCoord;
+        motor->run(BACKWARD);
+        dist = currentCoord - targetCoord;
     }
 
     if (dist < 4) {
-        motor.setSpeed(LOW_SPEED);
+        motor->setSpeed(LOW_SPEED);
     } else {
-        motor.setSpeed(FULL_SPEED);
+        motor->setSpeed(FULL_SPEED);
     }
 }

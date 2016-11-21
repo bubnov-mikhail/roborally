@@ -12,7 +12,7 @@ void setup()
   /* DEMO */
   /* xFrom, yFrom, xTo, yTo, rFrom, rTo */
   MotorCommand currentCommand = {0, 0, 3, 10, 0, 2};
-  sendCommand(currentCommand);
+  sendCommand(&currentCommand);
 }
 
 void loop()
@@ -29,7 +29,7 @@ void handleFatalError()
     }
 }
 
-void sendCommand(MotorCommand *currentCommand)
+void sendCommand(MotorCommand* currentCommand)
 {
   Wire.beginTransmission(MOTOR_SLAVE_ADDRESS);
   Wire.write(currentCommand->xFrom);
