@@ -11,4 +11,5 @@
 void receiveCommandEvent(int numBytes);
 void execCommandEvent();
 void calibrate();
+void doExecCommand();
 void onInterrupt();

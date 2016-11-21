@@ -1,7 +1,6 @@
 #include <Arduino.h>
 #include <Wire.h>
 #include <main.h>
-#include <motorCommand.h>
 #include <motorCtrlTransmitStatuses.h>
 #include <motorAddress.h>
 
