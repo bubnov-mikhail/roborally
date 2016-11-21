@@ -10,7 +10,8 @@ volatile bool haveCommand = false;
 volatile bool calibrating = true;
 volatile MotorCommand currentCommand;
 
-void setup() {
+void setup()
+{
   Wire.begin(MOTOR_SLAVE_ADDRESS);
   Wire.onReceive(receiveCommandEvent);
   Wire.onRequest(execCommandEvent);
@@ -19,10 +20,12 @@ void setup() {
   calibrate();
 }
 
-void loop() {
+void loop()
+{
 }
 
-void calibrate() {
+void calibrate()
+{
   pinMode(SENSORS_ENABLE_PIN, OUTPUT);
   pinMode(STEP_PIN_X, INPUT);
   digitalWrite(SENSORS_ENABLE_PIN, HIGH);
@@ -35,11 +38,13 @@ void calibrate() {
   Serial.println("Calibrating done");
 }
 
-void onInterrupt() {
+void onInterrupt()
+{
   digitalWrite(13, analogRead(STEP_PIN_X) > 512);
 }
 
-void receiveCommandEvent(int numBytes) {
+void receiveCommandEvent(int numBytes)
+{
   Serial.println("receiveCommandEvent");
   unsigned int i = 0;
   unsigned char buffer[COMMAND_LENGTH];
@@ -71,7 +76,8 @@ void receiveCommandEvent(int numBytes) {
   Serial.println("Command received!");
 }
 
-void execCommandEvent() {
+void execCommandEvent()
+{
     Serial.println("execCommandEvent");
     if (calibrating) {
         Serial.println("Calibrating!");
