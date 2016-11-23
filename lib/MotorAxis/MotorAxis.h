@@ -1,4 +1,5 @@
 #include <inttypes.h>
+#include <Arduino.h>
 #include <AFMotor.h>
 #define FULL_SPEED 128
 #define LOW_SPEED 20
