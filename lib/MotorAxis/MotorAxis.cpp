@@ -1,6 +1,5 @@
 #include <Arduino.h>
 #include <MotorAxis.h>
-#include <AFMotor.h>
 
 MotorAxis::MotorAxis(AF_DCMotor* _motor, uint8_t _stepPin, uint8_t _stopPin, uint8_t _maxCoord)
 {
