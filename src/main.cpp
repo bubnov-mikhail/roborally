@@ -3,12 +3,18 @@
 #include <main.h>
 #include <motorCtrlTransmitStatuses.h>
 #include <motorAddress.h>
+#include <DataBus.h>
+
+DataBus dataBus(BUS_CS_PIN, digitalPinToInterrupt(MAIN_INTERRUPT_PIN));
 
 void setup()
 {
   pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(MAIN_INTERRUPT_PIN, INPUT_PULLUP);
   delay(2000);
   Wire.begin();
+  dataBus.begin();
+  
   /* DEMO */
   /* xFrom, yFrom, xTo, yTo, rFrom, rTo */
   MotorCommand currentCommand = {0, 0, 3, 10, 0, 2};
