@@ -11,13 +11,14 @@ void setup()
 {
   pinMode(LED_BUILTIN, OUTPUT);
   pinMode(MAIN_INTERRUPT_PIN, INPUT_PULLUP);
+
   delay(2000);
   Wire.begin();
   dataBus.begin();
-  
+
   /* DEMO */
   /* xFrom, yFrom, xTo, yTo, rFrom, rTo */
-  MotorCommand currentCommand = {0, 0, 3, 10, 0, 2};
+  MotorCommand currentCommand = {4, 0, 7, 10, 0, 2};
   sendCommand(&currentCommand);
 }
 
@@ -25,9 +26,9 @@ void loop()
 {
 }
 
-void handleFatalError()
+void handleFatalError(bool loop = true)
 {
-    while (true) {
+    while (loop) {
       digitalWrite(FATAL_ERROR_PIN, HIGH);
       delay(500);
       digitalWrite(FATAL_ERROR_PIN, LOW);
@@ -52,6 +53,7 @@ void sendCommand(MotorCommand* currentCommand)
         case STATE_OK:
             break;
         case STATE_CALIBRATING:
+            handleFatalError(false);
             delay(3000);
             sendCommand(currentCommand);
             break;

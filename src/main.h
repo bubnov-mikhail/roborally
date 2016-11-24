@@ -5,4 +5,4 @@
 #define BUS_CS_PIN 3
 
 void sendCommand(MotorCommand* currentCommand);
-void handleFatalError();
+void handleFatalError(bool loop);
