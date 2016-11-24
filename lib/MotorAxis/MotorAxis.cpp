@@ -23,8 +23,8 @@ bool MotorAxis::isReachedTarget(void)
 {
     if (targetCoord == currentCoord) {
         motor->setSpeed(0);
-        motor->run(BRAKE);
         motor->run(RELEASE);
+        motor->run(BRAKE);
 
         return true;
     }
@@ -47,8 +47,10 @@ void MotorAxis::checkPins(void)
     bool _stopPinState = (analogRead(stopPin) > 512);
     if (_stopPinState && !lastStopPinState) {
         if (lastStepPinState) {
+            // If We have step interrupt + stop interupt - this is 0 coord
             currentCoord = 0;
         } else {
+            // If we have only stop interrupt - this is maximum coord
             currentCoord = maxCoord;
         }
     }
