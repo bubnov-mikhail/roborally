@@ -1,8 +1,8 @@
-#define STEP_PIN_X A6
-#define STOP_PIN_X A7
-#define STEP_PIN_Y A1
-#define STOP_PIN_Y A2
-#define SENSORS_ENABLE_PIN A0
+#define STEP_PIN_X A0
+#define STOP_PIN_X A1
+#define STEP_PIN_Y A6
+#define STOP_PIN_Y A7
+#define SENSORS_ENABLE_PIN A2
 #define MOTOR_SLAVE_INTERRUPT_PIN 2
 
 #define GRAB_PIN 10

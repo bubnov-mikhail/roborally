@@ -10,18 +10,19 @@
 volatile bool haveCommand = false;
 volatile bool calibrating = true;
 volatile MotorCommand currentCommand;
+uint8_t interruptNumber = digitalPinToInterrupt(MOTOR_SLAVE_INTERRUPT_PIN);
+
 AF_DCMotor motorX(1);
 AF_DCMotor motorY(2);
 MotorAxis motorAxisX(&motorX, STEP_PIN_X, STOP_PIN_X, 12);
 MotorAxis motorAxisY(&motorY, STEP_PIN_Y, STOP_PIN_Y, 16);
-uint8_t interruptNumber = digitalPinToInterrupt(MOTOR_SLAVE_INTERRUPT_PIN);
 
 void setup()
 {
     pinMode(GRAB_PIN, OUTPUT);
     pinMode(SERVO_PIN, OUTPUT);
     pinMode(SENSORS_ENABLE_PIN, OUTPUT);
-    pinMode(MOTOR_SLAVE_INTERRUPT_PIN, INPUT_PULLUP);
+    pinMode(MOTOR_SLAVE_INTERRUPT_PIN, INPUT);
 
     Wire.begin(MOTOR_SLAVE_ADDRESS);
     Wire.onReceive(receiveCommandEvent);
