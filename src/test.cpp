@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <Print.h>
 #include <test.h>
 #include <SPI.h>
 
@@ -22,9 +23,11 @@ void loop()
   digitalWrite(REG_LATCH, LOW);
   uint8_t data = SPI.transfer(0);
   digitalWrite(REG_LATCH, HIGH);
-  
+
   if (data != lastData) {
     Serial.println((int)data);
+    Serial.println(data, BIN);
+    Serial.println("");
     lastData = data;
   }
 }
