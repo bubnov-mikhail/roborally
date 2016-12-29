@@ -21,4 +21,6 @@ class MotorAxis
         volatile bool lastStepPinState;
         volatile bool lastStopPinState;
         AF_DCMotor* motor;
+        void checkStepPin(void);
+        void checkStopPin(void);
 };

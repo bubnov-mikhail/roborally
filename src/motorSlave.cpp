@@ -10,7 +10,6 @@
 volatile bool haveCommand = false;
 volatile bool calibrating = true;
 volatile MotorCommand currentCommand;
-uint8_t interruptNumber = digitalPinToInterrupt(MOTOR_SLAVE_INTERRUPT_PIN);
 
 AF_DCMotor motorX(1);
 AF_DCMotor motorY(2);
@@ -22,7 +21,6 @@ void setup()
     pinMode(GRAB_PIN, OUTPUT);
     pinMode(SERVO_PIN, OUTPUT);
     pinMode(SENSORS_ENABLE_PIN, OUTPUT);
-    pinMode(MOTOR_SLAVE_INTERRUPT_PIN, INPUT);
 
     Wire.begin(MOTOR_SLAVE_ADDRESS);
     Wire.onReceive(receiveCommandEvent);
@@ -97,12 +95,11 @@ void execCommandEvent()
 void doExecCommand()
 {
     digitalWrite(SENSORS_ENABLE_PIN, HIGH);
-    attachInterrupt(interruptNumber, onInterrupt, CHANGE);
 
     // Move to "From"
     motorAxisX.moveTo(currentCommand.xFrom);
     motorAxisY.moveTo(currentCommand.yFrom);
-    while (!motorAxisX.isReachedTarget() || !motorAxisY.isReachedTarget()) {}
+    checkAxises();
 
     /*
     * @todo Grab, Rotate, Ungrab...
@@ -111,14 +108,15 @@ void doExecCommand()
     // Move to "To"
     motorAxisX.moveTo(currentCommand.xTo);
     motorAxisY.moveTo(currentCommand.yTo);
-    while (!motorAxisX.isReachedTarget() || !motorAxisY.isReachedTarget()) {}
+    checkAxises();
 
-    detachInterrupt(interruptNumber);
     digitalWrite(SENSORS_ENABLE_PIN, LOW);
 }
 
-void onInterrupt()
+void checkAxises()
 {
-    motorAxisX.checkPins();
-    motorAxisY.checkPins();
+    while (!motorAxisX.isReachedTarget() && !motorAxisY.isReachedTarget()) {
+        motorAxisX.checkPins();
+        motorAxisY.checkPins();
+    }
 }

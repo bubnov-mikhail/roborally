@@ -16,15 +16,14 @@ MotorAxis::MotorAxis(AF_DCMotor* _motor, uint8_t _stepPin, uint8_t _stopPin, uin
 void MotorAxis::moveTo(uint8_t coord)
 {
     targetCoord = coord;
-    checkPins();
 }
 
 bool MotorAxis::isReachedTarget(void)
 {
     if (targetCoord == currentCoord) {
         motor->setSpeed(0);
-        motor->run(RELEASE);
         motor->run(BRAKE);
+        motor->run(RELEASE);
 
         return true;
     }
@@ -34,27 +33,8 @@ bool MotorAxis::isReachedTarget(void)
 
 void MotorAxis::checkPins(void)
 {
-    bool _stepPinState = (analogRead(stepPin) > 512);
-    if (_stepPinState && !lastStepPinState) {
-        if (targetCoord > currentCoord) {
-            currentCoord++;
-        } else {
-            currentCoord--;
-        }
-    }
-    lastStepPinState = _stepPinState;
-
-    bool _stopPinState = (analogRead(stopPin) > 512);
-    if (_stopPinState && !lastStopPinState) {
-        if (lastStepPinState) {
-            // If We have step interrupt + stop interupt - this is 0 coord
-            currentCoord = 0;
-        } else {
-            // If we have only stop interrupt - this is maximum coord
-            currentCoord = maxCoord;
-        }
-    }
-    lastStopPinState = _stopPinState;
+    checkStepPin();
+    checkStopPin();
 
     if (isReachedTarget()) {
         return;
@@ -74,4 +54,32 @@ void MotorAxis::checkPins(void)
     } else {
         motor->setSpeed(FULL_SPEED);
     }
+}
+
+void MotorAxis::checkStepPin(void)
+{
+    bool _stepPinState = (analogRead(stepPin) > 512);
+    if (_stepPinState && !lastStepPinState) {
+        if (targetCoord > currentCoord) {
+            currentCoord++;
+        } else {
+            currentCoord--;
+        }
+    }
+    lastStepPinState = _stepPinState;
+}
+
+void MotorAxis::checkStopPin(void)
+{
+    bool _stopPinState = (analogRead(stopPin) > 512);
+    if (_stopPinState && !lastStopPinState) {
+        if (lastStepPinState) {
+            // If We have step interrupt + stop interupt - this is 0 coord
+            currentCoord = 0;
+        } else {
+            // If we have only stop interrupt - this is maximum coord
+            currentCoord = maxCoord;
+        }
+    }
+    lastStopPinState = _stopPinState;
 }
