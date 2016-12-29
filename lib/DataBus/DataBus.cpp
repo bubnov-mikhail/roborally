@@ -16,7 +16,9 @@ void DataBus::begin()
 
 uint16_t DataBus::getDeviceData(uint8_t deviceNumber)
 {
+    // There is a reading operation - we must only trigger latch low and high
     select(deviceNumber, true);
+    resetDevices();
 
     return transferData(0, false);
 }
