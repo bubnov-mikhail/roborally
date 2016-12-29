@@ -19,18 +19,10 @@ void setup()
 void loop()
 {
   delay(1000);
-  /* Выставим на защёлке сначала низкий, потом - высокий уровни.
-   * Сдвиговый регистр запомнит уровни сигналов на входах и сможет
-   * их нам потом отдать бит за битом.
-   */
   digitalWrite(REG_LATCH, LOW);
-  delay(10);
-  digitalWrite(REG_LATCH, HIGH);
-  /* Читаем запомненные состояния входов. Ноль шлём просто потому,
-   * что transfer() одновременно и шлёт, и принимает. Да и вообще,
-   * MOSI не подключена (:
-   */
   uint8_t data = SPI.transfer(0);
+  digitalWrite(REG_LATCH, HIGH);
+  
   if (data != lastData) {
     Serial.println((int)data);
     lastData = data;
