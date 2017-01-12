@@ -13,8 +13,8 @@ volatile MotorCommand currentCommand;
 
 AF_DCMotor motorX(1);
 AF_DCMotor motorY(2);
-MotorAxis motorAxisX(&motorX, STEP_PIN_X, STOP_PIN_X, 12);
-MotorAxis motorAxisY(&motorY, STEP_PIN_Y, STOP_PIN_Y, 16);
+MotorAxis motorAxisX(&motorX, STEP_PIN_X, STOP_PIN_X, 20);
+MotorAxis motorAxisY(&motorY, STEP_PIN_Y, STOP_PIN_Y, 20);
 
 void setup()
 {
@@ -115,7 +115,7 @@ void doExecCommand()
 
 void checkAxises()
 {
-    while (!motorAxisX.isReachedTarget() && !motorAxisY.isReachedTarget()) {
+    while (!motorAxisX.isReachedTarget() || !motorAxisY.isReachedTarget()) {
         motorAxisX.checkPins();
         motorAxisY.checkPins();
     }
