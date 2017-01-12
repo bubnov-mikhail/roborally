@@ -58,7 +58,7 @@ void MotorAxis::checkPins(void)
 
 void MotorAxis::checkStepPin(void)
 {
-    bool _stepPinState = (analogRead(stepPin) > 512);
+    bool _stepPinState = !digitalRead(stepPin);
     if (_stepPinState && !lastStepPinState) {
         if (targetCoord > currentCoord) {
             currentCoord++;
@@ -71,7 +71,7 @@ void MotorAxis::checkStepPin(void)
 
 void MotorAxis::checkStopPin(void)
 {
-    bool _stopPinState = (analogRead(stopPin) > 512);
+    bool _stopPinState = !digitalRead(stopPin);
     if (_stopPinState && !lastStopPinState) {
         if (lastStepPinState) {
             // If We have step interrupt + stop interupt - this is 0 coord
