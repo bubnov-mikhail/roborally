@@ -2,7 +2,7 @@
 #include <Arduino.h>
 #include <AFMotor.h>
 #define FULL_SPEED 255
-#define LOW_SPEED 128
+#define LOW_SPEED 255
 
 class MotorAxis
 {

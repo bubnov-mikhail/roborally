@@ -2,7 +2,7 @@
 
 MotorAxis::MotorAxis(AF_DCMotor* _motor, uint8_t _stepPin, uint8_t _stopPin, uint8_t _maxCoord)
 {
-    currentCoord = maxCoord + 10;
+    currentCoord = _maxCoord;
     maxCoord = _maxCoord;
     stepPin = _stepPin;
     stopPin = _stopPin;
@@ -22,7 +22,6 @@ bool MotorAxis::isReachedTarget(void)
 {
     if (targetCoord == currentCoord) {
         motor->setSpeed(0);
-        motor->run(BRAKE);
         motor->run(RELEASE);
 
         return true;
@@ -33,6 +32,10 @@ bool MotorAxis::isReachedTarget(void)
 
 void MotorAxis::checkPins(void)
 {
+    if (isReachedTarget()) {
+        return;
+    }
+
     checkStepPin();
     checkStopPin();
 
@@ -44,7 +47,7 @@ void MotorAxis::checkPins(void)
     if (targetCoord > currentCoord) {
         motor->run(FORWARD);
         dist = targetCoord - currentCoord;
-    } else {
+    } else if (targetCoord < currentCoord) {
         motor->run(BACKWARD);
         dist = currentCoord - targetCoord;
     }
@@ -61,9 +64,9 @@ void MotorAxis::checkStepPin(void)
     bool _stepPinState = !digitalRead(stepPin);
     if (_stepPinState && !lastStepPinState) {
         if (targetCoord > currentCoord) {
-            currentCoord++;
-        } else {
-            currentCoord--;
+            currentCoord = min(currentCoord + 1, maxCoord);
+        } else if (targetCoord < currentCoord) {
+            currentCoord = max(currentCoord - 1, 0);
         }
     }
     lastStepPinState = _stepPinState;

@@ -12,9 +12,9 @@ volatile bool calibrating = true;
 volatile MotorCommand currentCommand;
 
 AF_DCMotor motorX(1);
-AF_DCMotor motorY(2);
-MotorAxis motorAxisX(&motorX, STEP_PIN_X, STOP_PIN_X, 20);
-MotorAxis motorAxisY(&motorY, STEP_PIN_Y, STOP_PIN_Y, 20);
+AF_DCMotor motorY(3);
+MotorAxis motorAxisX(&motorX, STEP_PIN_X, STOP_PIN_X, MAX_COORD_X);
+MotorAxis motorAxisY(&motorY, STEP_PIN_Y, STOP_PIN_Y, MAX_COORD_Y);
 
 void setup()
 {
@@ -34,8 +34,8 @@ void loop()
 
 void calibrate()
 {
-    currentCommand.xFrom = 0;
-    currentCommand.yFrom = 0;
+    currentCommand.xFrom = MAX_COORD_X;
+    currentCommand.yFrom = MAX_COORD_Y;
     currentCommand.xTo = 0;
     currentCommand.yTo = 0;
     currentCommand.rFrom = 0;
@@ -51,7 +51,7 @@ void receiveCommandEvent(int numBytes)
 
     while (Wire.available()) {
     if (i < COMMAND_LENGTH && !haveCommand && !calibrating) {
-        buffer[i] = Wire.read();
+        buffer[i] = (uint8_t)Wire.read();
     } else {
         // if we receive more data then allowed just throw it away
         Wire.read();
@@ -69,7 +69,6 @@ void receiveCommandEvent(int numBytes)
     currentCommand.yTo = buffer[3];
     currentCommand.rFrom = buffer[4];
     currentCommand.rTo = buffer[5];
-
     haveCommand = true;
 }
 
@@ -104,7 +103,6 @@ void doExecCommand()
     /*
     * @todo Grab, Rotate, Ungrab...
     */
-
     // Move to "To"
     motorAxisX.moveTo(currentCommand.xTo);
     motorAxisY.moveTo(currentCommand.yTo);

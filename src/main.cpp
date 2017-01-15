@@ -9,7 +9,7 @@ DataBus dataBus(BUS_CS_PIN, digitalPinToInterrupt(MAIN_INTERRUPT_PIN));
 
 void setup()
 {
-  pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(FATAL_ERROR_PIN, OUTPUT);
   pinMode(MAIN_INTERRUPT_PIN, INPUT_PULLUP);
 
   delay(2000);
@@ -28,12 +28,13 @@ void loop()
 
 void handleFatalError(bool loop = true)
 {
-    while (loop) {
+    do {
       digitalWrite(FATAL_ERROR_PIN, HIGH);
       delay(500);
       digitalWrite(FATAL_ERROR_PIN, LOW);
       delay(500);
-    }
+    } while (loop);
+    delay(1000);
 }
 
 void sendCommand(MotorCommand* currentCommand)
@@ -51,6 +52,7 @@ void sendCommand(MotorCommand* currentCommand)
   while (Wire.available()) {
     switch (Wire.read()) {
         case STATE_OK:
+            digitalWrite(FATAL_ERROR_PIN, HIGH);
             break;
         case STATE_CALIBRATING:
             handleFatalError(false);
