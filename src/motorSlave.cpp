@@ -4,17 +4,11 @@
 #include <motorCommand.h>
 #include <motorCtrlTransmitStatuses.h>
 #include <motorAddress.h>
-#include <MotorAxis.h>
 #include <AFMotor.h>
 
 volatile bool haveCommand = false;
 volatile bool calibrating = true;
 volatile MotorCommand currentCommand;
-
-AF_DCMotor motorX(1);
-AF_DCMotor motorY(3);
-MotorAxis motorAxisX(&motorX, STEP_PIN_X, STOP_PIN_X, MAX_COORD_X);
-MotorAxis motorAxisY(&motorY, STEP_PIN_Y, STOP_PIN_Y, MAX_COORD_Y);
 
 void setup()
 {
@@ -93,12 +87,17 @@ void execCommandEvent()
 
 void doExecCommand()
 {
+    AF_DCMotor motorX(1, MOTOR12_1KHZ);
+    AF_DCMotor motorY(3, MOTOR34_1KHZ);
+    MotorAxis motorAxisX(&motorX, STEP_PIN_X, STOP_PIN_X, MAX_COORD_X);
+    MotorAxis motorAxisY(&motorY, STEP_PIN_Y, STOP_PIN_Y, MAX_COORD_Y);
+
     digitalWrite(SENSORS_ENABLE_PIN, HIGH);
 
     // Move to "From"
     motorAxisX.moveTo(currentCommand.xFrom);
     motorAxisY.moveTo(currentCommand.yFrom);
-    checkAxises();
+    checkAxises(&motorAxisX, &motorAxisY);
 
     /*
     * @todo Grab, Rotate, Ungrab...
@@ -106,15 +105,15 @@ void doExecCommand()
     // Move to "To"
     motorAxisX.moveTo(currentCommand.xTo);
     motorAxisY.moveTo(currentCommand.yTo);
-    checkAxises();
+    checkAxises(&motorAxisX, &motorAxisY);
 
     digitalWrite(SENSORS_ENABLE_PIN, LOW);
 }
 
-void checkAxises()
+void checkAxises(MotorAxis* motorAxisX, MotorAxis* motorAxisY)
 {
-    while (!motorAxisX.isReachedTarget() || !motorAxisY.isReachedTarget()) {
-        motorAxisX.checkPins();
-        motorAxisY.checkPins();
+    while (!motorAxisX->isReachedTarget() || !motorAxisY->isReachedTarget()) {
+        motorAxisX->checkPins();
+        motorAxisY->checkPins();
     }
 }

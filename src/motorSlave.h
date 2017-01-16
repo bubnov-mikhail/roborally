@@ -1,3 +1,5 @@
+#include <MotorAxis.h>
+
 #define STEP_PIN_X A0
 #define STOP_PIN_X A1
 #define STEP_PIN_Y A2
@@ -13,4 +15,4 @@ void receiveCommandEvent(int numBytes);
 void execCommandEvent();
 void calibrate();
 void doExecCommand();
-void checkAxises();
+void checkAxises(MotorAxis* motorAxisX, MotorAxis* motorAxisY);
