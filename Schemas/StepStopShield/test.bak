@@ -1,0 +1,249 @@
+EESchema Schematic File Version 2
+LIBS:power
+LIBS:device
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:test-cache
+EELAYER 25 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L D_Photo D3
+U 1 1 58773BF9
+P 2450 2850
+F 0 "D3" H 2470 2920 50  0000 L CNN
+F 1 "D_Photo" H 2410 2740 50  0000 C CNN
+F 2 "LEDs:LED-3MM" H 2400 2850 50  0001 C CNN
+F 3 "" H 2400 2850 50  0000 C CNN
+	1    2450 2850
+	0    1    1    0   
+$EndComp
+$Comp
+L LED D4
+U 1 1 58773DB7
+P 2900 2800
+F 0 "D4" H 2900 2900 50  0000 C CNN
+F 1 "LED" H 2900 2700 50  0000 C CNN
+F 2 "LEDs:LED-3MM" H 2900 2800 50  0001 C CNN
+F 3 "" H 2900 2800 50  0000 C CNN
+	1    2900 2800
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R R4
+U 1 1 58773E4E
+P 2900 2350
+F 0 "R4" V 2980 2350 50  0000 C CNN
+F 1 "220" V 2900 2350 50  0000 C CNN
+F 2 "Resistors_THT:Resistor_Horizontal_RM7mm" V 2830 2350 50  0001 C CNN
+F 3 "" H 2900 2350 50  0000 C CNN
+	1    2900 2350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2450 2000 2450 2650
+Wire Wire Line
+	2900 2000 2900 2200
+Wire Wire Line
+	2900 2500 2900 2650
+$Comp
+L R R3
+U 1 1 587744F8
+P 2450 3500
+F 0 "R3" V 2530 3500 50  0000 C CNN
+F 1 "1k" V 2450 3500 50  0000 C CNN
+F 2 "Resistors_THT:Resistor_Horizontal_RM10mm" V 2380 3500 50  0001 C CNN
+F 3 "" H 2450 3500 50  0000 C CNN
+	1    2450 3500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2450 3650 2450 4150
+Wire Wire Line
+	3950 3100 4250 3100
+$Comp
+L R R5
+U 1 1 587748EF
+P 3750 3550
+F 0 "R5" V 3850 3550 50  0000 C CNN
+F 1 "10k" V 3750 3550 50  0000 C CNN
+F 2 "Resistors_THT:Resistor_Horizontal_RM10mm" V 3680 3550 50  0001 C CNN
+F 3 "" H 3750 3550 50  0000 C CNN
+	1    3750 3550
+	1    0    0    -1  
+$EndComp
+$Comp
+L D_Photo D1
+U 1 1 58774D6E
+P 1500 2850
+F 0 "D1" H 1520 2920 50  0000 L CNN
+F 1 "D_Photo" H 1460 2740 50  0000 C CNN
+F 2 "LEDs:LED-3MM" H 1450 2850 50  0001 C CNN
+F 3 "" H 1450 2850 50  0000 C CNN
+	1    1500 2850
+	0    1    1    0   
+$EndComp
+$Comp
+L LED D2
+U 1 1 58774D7A
+P 1950 2800
+F 0 "D2" H 1950 2900 50  0000 C CNN
+F 1 "LED" H 1950 2700 50  0000 C CNN
+F 2 "LEDs:LED-3MM" H 1950 2800 50  0001 C CNN
+F 3 "" H 1950 2800 50  0000 C CNN
+	1    1950 2800
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R R2
+U 1 1 58774D80
+P 1950 2350
+F 0 "R2" V 2030 2350 50  0000 C CNN
+F 1 "220" V 1950 2350 50  0000 C CNN
+F 2 "Resistors_THT:Resistor_Horizontal_RM7mm" V 1880 2350 50  0001 C CNN
+F 3 "" H 1950 2350 50  0000 C CNN
+	1    1950 2350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1500 2650 1500 2000
+Wire Wire Line
+	1950 2000 1950 2200
+Wire Wire Line
+	1950 2500 1950 2650
+$Comp
+L R R1
+U 1 1 58774D8C
+P 1500 3500
+F 0 "R1" V 1580 3500 50  0000 C CNN
+F 1 "1k" V 1500 3500 50  0000 C CNN
+F 2 "Resistors_THT:Resistor_Horizontal_RM10mm" V 1430 3500 50  0001 C CNN
+F 3 "" H 1500 3500 50  0000 C CNN
+	1    1500 3500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1500 2950 1500 3350
+Wire Wire Line
+	1500 3100 1300 3100
+Connection ~ 1500 3100
+Wire Wire Line
+	1500 3650 1500 3900
+Connection ~ 2450 2000
+Connection ~ 1950 2000
+Connection ~ 2200 2000
+Wire Wire Line
+	1500 2000 2900 2000
+Wire Wire Line
+	3750 3700 1300 3700
+Wire Wire Line
+	1950 2950 1950 3100
+Wire Wire Line
+	1950 3100 3550 3100
+Wire Wire Line
+	2900 3100 2900 2950
+Connection ~ 2900 3100
+$Comp
+L CONN_01X03 CON1
+U 1 1 5877505B
+P 1100 3200
+F 0 "CON1" H 1100 3400 50  0000 C CNN
+F 1 "LOGIC" V 1200 3200 50  0000 C CNN
+F 2 "Socket_Strips:Socket_Strip_Straight_1x03" H 1100 3200 50  0001 C CNN
+F 3 "" H 1100 3200 50  0000 C CNN
+	1    1100 3200
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	1300 3200 2450 3200
+Wire Wire Line
+	2450 2950 2450 3350
+Connection ~ 2450 3200
+Wire Wire Line
+	1300 3700 1300 3300
+Wire Wire Line
+	1500 3900 4250 3900
+Connection ~ 2450 3900
+Wire Wire Line
+	4250 3900 4250 3100
+$Comp
+L CONN_01X02 CON2
+U 1 1 587757F0
+P 1100 4100
+F 0 "CON2" H 1100 4250 50  0000 C CNN
+F 1 "PWR" V 1200 4100 50  0000 C CNN
+F 2 "Socket_Strips:Socket_Strip_Straight_1x02" H 1100 4100 50  0001 C CNN
+F 3 "" H 1100 4100 50  0000 C CNN
+	1    1100 4100
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	2450 4150 1300 4150
+Wire Wire Line
+	2200 2000 2200 4050
+Wire Wire Line
+	2200 4050 1300 4050
+$Comp
+L R R6
+U 1 1 5880A6FE
+P 4000 3400
+F 0 "R6" V 4080 3400 50  0000 C CNN
+F 1 "1k" V 4000 3400 50  0000 C CNN
+F 2 "Resistors_THT:Resistor_Horizontal_RM10mm" V 3930 3400 50  0001 C CNN
+F 3 "" H 4000 3400 50  0000 C CNN
+	1    4000 3400
+	0    1    1    0   
+$EndComp
+$Comp
+L BC547 Q1
+U 1 1 58776C0D
+P 3750 3200
+F 0 "Q1" H 3950 3275 50  0000 L CNN
+F 1 "BC547" H 3950 3200 50  0000 L CNN
+F 2 "TO_SOT_Packages_THT:TO-92_Inline_Narrow_Oval" H 3950 3125 50  0000 L CIN
+F 3 "" H 3750 3200 50  0000 L CNN
+	1    3750 3200
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3750 3400 3850 3400
+Wire Wire Line
+	4150 3400 4250 3400
+Connection ~ 4250 3400
+$EndSCHEMATC
