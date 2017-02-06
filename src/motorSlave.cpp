@@ -9,6 +9,10 @@
 volatile bool haveCommand = false;
 volatile bool calibrating = true;
 volatile MotorCommand currentCommand;
+AF_DCMotor motorX(MOTOR_X_PORT);
+AF_DCMotor motorY(MOTOR_Y_PORT);
+MotorAxis motorAxisX(&motorX, STEP_PIN_X, STOP_PIN_X, MAX_COORD_X);
+MotorAxis motorAxisY(&motorY, STEP_PIN_Y, STOP_PIN_Y, MAX_COORD_Y);
 
 void setup()
 {
@@ -52,9 +56,7 @@ void receiveCommandEvent(int numBytes)
     }
     i++;
     }
-    if (haveCommand) {
-        return;
-    } else if (calibrating) {
+    if (haveCommand || calibrating) {
         return;
     }
     currentCommand.xFrom = buffer[0];
@@ -87,11 +89,6 @@ void execCommandEvent()
 
 void doExecCommand()
 {
-    AF_DCMotor motorX(1, MOTOR12_1KHZ);
-    AF_DCMotor motorY(3, MOTOR34_1KHZ);
-    MotorAxis motorAxisX(&motorX, STEP_PIN_X, STOP_PIN_X, MAX_COORD_X);
-    MotorAxis motorAxisY(&motorY, STEP_PIN_Y, STOP_PIN_Y, MAX_COORD_Y);
-
     digitalWrite(SENSORS_ENABLE_PIN, HIGH);
 
     // Move to "From"

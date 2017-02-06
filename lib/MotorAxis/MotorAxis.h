@@ -1,8 +1,6 @@
 #include <inttypes.h>
 #include <Arduino.h>
 #include <AFMotor.h>
-#define FULL_SPEED 255
-#define LOW_SPEED 255
 
 class MotorAxis
 {
@@ -16,11 +14,14 @@ class MotorAxis
         uint8_t stepPin;
         uint8_t stopPin;
         volatile uint8_t currentCoord;
+        volatile uint8_t targetCoord;
         uint8_t maxCoord;
-        uint8_t targetCoord;
+        const static uint8_t fullSpeed = 255;
+        const static uint8_t lowSpeed = 128;
         volatile bool lastStepPinState;
         volatile bool lastStopPinState;
         AF_DCMotor* motor;
         void checkStepPin(void);
         void checkStopPin(void);
+        void updateSpeed(void);
 };

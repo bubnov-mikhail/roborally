@@ -16,6 +16,12 @@ MotorAxis::MotorAxis(AF_DCMotor* _motor, uint8_t _stepPin, uint8_t _stopPin, uin
 void MotorAxis::moveTo(uint8_t coord)
 {
     targetCoord = coord;
+    if (targetCoord > currentCoord) {
+        motor->run(FORWARD);
+    } else if (targetCoord < currentCoord) {
+        motor->run(BACKWARD);
+    }
+    updateSpeed();
 }
 
 bool MotorAxis::isReachedTarget(void)
@@ -42,21 +48,6 @@ void MotorAxis::checkPins(void)
     if (isReachedTarget()) {
         return;
     }
-
-    uint8_t dist;
-    if (targetCoord > currentCoord) {
-        motor->run(FORWARD);
-        dist = targetCoord - currentCoord;
-    } else if (targetCoord < currentCoord) {
-        motor->run(BACKWARD);
-        dist = currentCoord - targetCoord;
-    }
-
-    if (dist < 4) {
-        motor->setSpeed(LOW_SPEED);
-    } else {
-        motor->setSpeed(FULL_SPEED);
-    }
 }
 
 void MotorAxis::checkStepPin(void)
@@ -68,6 +59,7 @@ void MotorAxis::checkStepPin(void)
         } else if (targetCoord < currentCoord) {
             currentCoord = max(currentCoord - 1, 0);
         }
+        updateSpeed();
     }
     lastStepPinState = _stepPinState;
 }
@@ -83,6 +75,17 @@ void MotorAxis::checkStopPin(void)
             // If we have only stop interrupt - this is maximum coord
             currentCoord = maxCoord;
         }
+        updateSpeed();
     }
     lastStopPinState = _stopPinState;
+}
+
+void MotorAxis::updateSpeed(void)
+{
+  uint8_t dist = abs(currentCoord - targetCoord);
+  if (dist < 4 && dist > 0) {
+      motor->setSpeed(lowSpeed);
+  } else {
+      motor->setSpeed(fullSpeed);
+  }
 }
