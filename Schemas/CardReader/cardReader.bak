@@ -1,0 +1,572 @@
+EESchema Schematic File Version 2
+LIBS:power
+LIBS:device
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:tcrt5000
+LIBS:74HC165
+LIBS:cardReader-cache
+EELAYER 25 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L tcrt5000 D1
+U 1 1 589AFEAD
+P 2850 2000
+F 0 "D1" H 2750 2200 60  0000 C CNN
+F 1 "tcrt5000" H 2900 1850 60  0000 C CNN
+F 2 "TCRT5000:TCRT5000" H 2850 1750 60  0001 C CNN
+F 3 "" H 2850 2050 60  0001 C CNN
+	1    2850 2000
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R R1
+U 1 1 589B01B2
+P 1950 1350
+F 0 "R1" V 2030 1350 50  0000 C CNN
+F 1 "1k" V 1950 1350 50  0000 C CNN
+F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 1880 1350 50  0001 C CNN
+F 3 "" H 1950 1350 50  0000 C CNN
+	1    1950 1350
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	2100 1350 2150 1350
+Wire Wire Line
+	1550 1250 8350 1250
+$Comp
+L R R2
+U 1 1 589B023D
+P 2900 1500
+F 0 "R2" V 2980 1500 50  0000 C CNN
+F 1 "330" V 2900 1500 50  0000 C CNN
+F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 2830 1500 50  0001 C CNN
+F 3 "" H 2900 1500 50  0000 C CNN
+	1    2900 1500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2350 1350 8800 1350
+$Comp
+L R R3
+U 1 1 589B034E
+P 3050 2300
+F 0 "R3" V 3130 2300 50  0000 C CNN
+F 1 "10k" V 3050 2300 50  0000 C CNN
+F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 2980 2300 50  0001 C CNN
+F 3 "" H 3050 2300 50  0000 C CNN
+	1    3050 2300
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	2500 2300 2500 1250
+Connection ~ 2500 1250
+Wire Wire Line
+	2150 1350 2150 1700
+Wire Wire Line
+	2350 2000 2350 1350
+Wire Wire Line
+	2900 2300 2900 3500
+Wire Wire Line
+	1950 1450 1950 2000
+Connection ~ 1950 1450
+$Comp
+L tcrt5000 D2
+U 1 1 589B0FD8
+P 3650 2000
+F 0 "D2" H 3550 2200 60  0000 C CNN
+F 1 "tcrt5000" H 3700 1850 60  0000 C CNN
+F 2 "TCRT5000:TCRT5000" H 3650 1750 60  0001 C CNN
+F 3 "" H 3650 2050 60  0001 C CNN
+	1    3650 2000
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3550 1250 3550 1650
+$Comp
+L R R4
+U 1 1 589B0FDF
+P 3700 1500
+F 0 "R4" V 3780 1500 50  0000 C CNN
+F 1 "330" V 3700 1500 50  0000 C CNN
+F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 3630 1500 50  0001 C CNN
+F 3 "" H 3700 1500 50  0000 C CNN
+	1    3700 1500
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R5
+U 1 1 589B0FE6
+P 3850 2300
+F 0 "R5" V 3930 2300 50  0000 C CNN
+F 1 "10k" V 3850 2300 50  0000 C CNN
+F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 3780 2300 50  0001 C CNN
+F 3 "" H 3850 2300 50  0000 C CNN
+	1    3850 2300
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3550 2300 3300 2300
+Wire Wire Line
+	3300 2300 3300 1250
+Wire Wire Line
+	3700 2300 3700 3400
+Connection ~ 2900 1350
+Connection ~ 2750 1250
+Connection ~ 3300 1250
+$Comp
+L tcrt5000 D3
+U 1 1 589B16CC
+P 4450 2000
+F 0 "D3" H 4350 2200 60  0000 C CNN
+F 1 "tcrt5000" H 4500 1850 60  0000 C CNN
+F 2 "TCRT5000:TCRT5000" H 4450 1750 60  0001 C CNN
+F 3 "" H 4450 2050 60  0001 C CNN
+	1    4450 2000
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	4350 1250 4350 1650
+$Comp
+L R R6
+U 1 1 589B16D3
+P 4500 1500
+F 0 "R6" V 4580 1500 50  0000 C CNN
+F 1 "330" V 4500 1500 50  0000 C CNN
+F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 4430 1500 50  0001 C CNN
+F 3 "" H 4500 1500 50  0000 C CNN
+	1    4500 1500
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R7
+U 1 1 589B16DA
+P 4650 2300
+F 0 "R7" V 4730 2300 50  0000 C CNN
+F 1 "10k" V 4650 2300 50  0000 C CNN
+F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 4580 2300 50  0001 C CNN
+F 3 "" H 4650 2300 50  0000 C CNN
+	1    4650 2300
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	4350 2300 4100 2300
+Wire Wire Line
+	4100 2300 4100 1250
+Wire Wire Line
+	4500 2300 4500 3500
+$Comp
+L tcrt5000 D4
+U 1 1 589B16E4
+P 5250 2000
+F 0 "D4" H 5150 2200 60  0000 C CNN
+F 1 "tcrt5000" H 5300 1850 60  0000 C CNN
+F 2 "TCRT5000:TCRT5000" H 5250 1750 60  0001 C CNN
+F 3 "" H 5250 2050 60  0001 C CNN
+	1    5250 2000
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	5150 1250 5150 1650
+$Comp
+L R R8
+U 1 1 589B16EB
+P 5300 1500
+F 0 "R8" V 5380 1500 50  0000 C CNN
+F 1 "330" V 5300 1500 50  0000 C CNN
+F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 5230 1500 50  0001 C CNN
+F 3 "" H 5300 1500 50  0000 C CNN
+	1    5300 1500
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R9
+U 1 1 589B16F1
+P 5450 2300
+F 0 "R9" V 5530 2300 50  0000 C CNN
+F 1 "10k" V 5450 2300 50  0000 C CNN
+F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 5380 2300 50  0001 C CNN
+F 3 "" H 5450 2300 50  0000 C CNN
+	1    5450 2300
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	5150 2300 4900 2300
+Wire Wire Line
+	4900 2300 4900 1250
+Wire Wire Line
+	5300 2300 5300 2600
+Connection ~ 4500 1350
+Connection ~ 3700 1350
+Connection ~ 3550 1250
+Connection ~ 4100 1250
+Connection ~ 4350 1250
+Connection ~ 4900 1250
+$Comp
+L tcrt5000 D5
+U 1 1 589B203C
+P 6050 2000
+F 0 "D5" H 5950 2200 60  0000 C CNN
+F 1 "tcrt5000" H 6100 1850 60  0000 C CNN
+F 2 "TCRT5000:TCRT5000" H 6050 1750 60  0001 C CNN
+F 3 "" H 6050 2050 60  0001 C CNN
+	1    6050 2000
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	5950 1250 5950 1650
+$Comp
+L R R10
+U 1 1 589B2043
+P 6100 1500
+F 0 "R10" V 6180 1500 50  0000 C CNN
+F 1 "330" V 6100 1500 50  0000 C CNN
+F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 6030 1500 50  0001 C CNN
+F 3 "" H 6100 1500 50  0000 C CNN
+	1    6100 1500
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R11
+U 1 1 589B204A
+P 6250 2300
+F 0 "R11" V 6330 2300 50  0000 C CNN
+F 1 "10k" V 6250 2300 50  0000 C CNN
+F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 6180 2300 50  0001 C CNN
+F 3 "" H 6250 2300 50  0000 C CNN
+	1    6250 2300
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	5950 2300 5700 2300
+Wire Wire Line
+	5700 2300 5700 1250
+Wire Wire Line
+	6100 2300 6100 2700
+$Comp
+L tcrt5000 D6
+U 1 1 589B2054
+P 6850 2000
+F 0 "D6" H 6750 2200 60  0000 C CNN
+F 1 "tcrt5000" H 6900 1850 60  0000 C CNN
+F 2 "TCRT5000:TCRT5000" H 6850 1750 60  0001 C CNN
+F 3 "" H 6850 2050 60  0001 C CNN
+	1    6850 2000
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	6750 1250 6750 1650
+$Comp
+L R R12
+U 1 1 589B205B
+P 6900 1500
+F 0 "R12" V 6980 1500 50  0000 C CNN
+F 1 "330" V 6900 1500 50  0000 C CNN
+F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 6830 1500 50  0001 C CNN
+F 3 "" H 6900 1500 50  0000 C CNN
+	1    6900 1500
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R13
+U 1 1 589B2061
+P 7050 2300
+F 0 "R13" V 7130 2300 50  0000 C CNN
+F 1 "10k" V 7050 2300 50  0000 C CNN
+F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 6980 2300 50  0001 C CNN
+F 3 "" H 7050 2300 50  0000 C CNN
+	1    7050 2300
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6750 2300 6500 2300
+Wire Wire Line
+	6500 2300 6500 1250
+Wire Wire Line
+	6900 2300 6900 2800
+Connection ~ 6100 1350
+$Comp
+L tcrt5000 D7
+U 1 1 589B206C
+P 7650 2000
+F 0 "D7" H 7550 2200 60  0000 C CNN
+F 1 "tcrt5000" H 7700 1850 60  0000 C CNN
+F 2 "TCRT5000:TCRT5000" H 7650 1750 60  0001 C CNN
+F 3 "" H 7650 2050 60  0001 C CNN
+	1    7650 2000
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	7550 1250 7550 1650
+$Comp
+L R R14
+U 1 1 589B2073
+P 7700 1500
+F 0 "R14" V 7780 1500 50  0000 C CNN
+F 1 "330" V 7700 1500 50  0000 C CNN
+F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 7630 1500 50  0001 C CNN
+F 3 "" H 7700 1500 50  0000 C CNN
+	1    7700 1500
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R15
+U 1 1 589B2079
+P 7850 2300
+F 0 "R15" V 7930 2300 50  0000 C CNN
+F 1 "10k" V 7850 2300 50  0000 C CNN
+F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 7780 2300 50  0001 C CNN
+F 3 "" H 7850 2300 50  0000 C CNN
+	1    7850 2300
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	7550 2300 7300 2300
+Wire Wire Line
+	7300 2300 7300 1250
+Wire Wire Line
+	7700 2300 7700 2900
+$Comp
+L tcrt5000 D8
+U 1 1 589B2083
+P 8450 2000
+F 0 "D8" H 8350 2200 60  0000 C CNN
+F 1 "tcrt5000" H 8500 1850 60  0000 C CNN
+F 2 "TCRT5000:TCRT5000" H 8450 1750 60  0001 C CNN
+F 3 "" H 8450 2050 60  0001 C CNN
+	1    8450 2000
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	8350 1250 8350 1650
+$Comp
+L R R16
+U 1 1 589B208A
+P 8500 1500
+F 0 "R16" V 8580 1500 50  0000 C CNN
+F 1 "330" V 8500 1500 50  0000 C CNN
+F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 8430 1500 50  0001 C CNN
+F 3 "" H 8500 1500 50  0000 C CNN
+	1    8500 1500
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R17
+U 1 1 589B2090
+P 8650 2300
+F 0 "R17" V 8730 2300 50  0000 C CNN
+F 1 "10k" V 8650 2300 50  0000 C CNN
+F 2 "Resistors_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P12.70mm_Horizontal" V 8580 2300 50  0001 C CNN
+F 3 "" H 8650 2300 50  0000 C CNN
+	1    8650 2300
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	8350 2300 8100 2300
+Wire Wire Line
+	8100 2300 8100 1250
+Wire Wire Line
+	8500 2300 8500 3000
+Connection ~ 7700 1350
+Connection ~ 6900 1350
+Connection ~ 5300 1350
+Connection ~ 5150 1250
+Connection ~ 5700 1250
+Connection ~ 5950 1250
+Connection ~ 6500 1250
+Connection ~ 6750 1250
+Connection ~ 7300 1250
+Connection ~ 7550 1250
+Connection ~ 8100 1250
+Wire Wire Line
+	2900 3500 4300 3500
+Wire Wire Line
+	4400 3500 4400 3400
+Wire Wire Line
+	4400 3400 3700 3400
+Wire Wire Line
+	4600 3500 4600 2600
+Wire Wire Line
+	4600 2600 5300 2600
+Wire Wire Line
+	4700 3500 4700 2700
+Wire Wire Line
+	4700 2700 6100 2700
+Wire Wire Line
+	4800 3500 4800 2800
+Wire Wire Line
+	4800 2800 6900 2800
+Wire Wire Line
+	4900 3500 4900 2900
+Wire Wire Line
+	4900 2900 7700 2900
+$Comp
+L 74HC165 U1
+U 1 1 589B091E
+P 4900 3900
+F 0 "U1" H 4650 4700 50  0000 L CNN
+F 1 "74HC165" H 4700 3500 50  0000 L CNN
+F 2 "Housings_DIP:DIP-16_W7.62mm" H 4900 3900 60  0001 C CNN
+F 3 "STMicroelectronics" H 4900 3900 50  0001 L CNN
+F 4 "None" H 4900 3900 50  0001 L CNN "Package"
+F 5 "74HC165" H 4900 3900 50  0001 L CNN "MP"
+F 6 "None" H 4900 3900 50  0001 L CNN "Price"
+F 7 "Unavailable" H 4900 3900 50  0001 L CNN "Availability"
+	1    4900 3900
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	5000 3500 5000 3000
+Wire Wire Line
+	5000 3000 8500 3000
+Wire Wire Line
+	1550 1350 1800 1350
+Wire Wire Line
+	1800 1450 1800 4450
+Wire Wire Line
+	1800 4450 5100 4450
+Wire Wire Line
+	5000 4450 5000 4300
+Connection ~ 1800 1450
+Wire Wire Line
+	5100 4450 5100 4300
+Connection ~ 5000 4450
+Wire Wire Line
+	1700 1250 1700 4300
+Wire Wire Line
+	1700 4300 4300 4300
+Connection ~ 1700 1250
+$Comp
+L CONN_01X04 P2
+U 1 1 589B659E
+P 4550 5100
+F 0 "P2" H 4550 5350 50  0000 C CNN
+F 1 "DATA" V 4650 5100 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x04_Pitch2.54mm" H 4550 5100 50  0001 C CNN
+F 3 "" H 4550 5100 50  0000 C CNN
+	1    4550 5100
+	0    1    1    0   
+$EndComp
+NoConn ~ 4700 4300
+Wire Wire Line
+	4400 4300 4400 4900
+Wire Wire Line
+	4600 4300 4500 4300
+Wire Wire Line
+	4500 4300 4500 4900
+Wire Wire Line
+	4900 4300 4900 4350
+Wire Wire Line
+	4900 4350 4600 4350
+Wire Wire Line
+	4600 4350 4600 4900
+Wire Wire Line
+	5100 3500 5400 3500
+Wire Wire Line
+	5400 3500 5400 4550
+Wire Wire Line
+	5400 4550 4700 4550
+Wire Wire Line
+	4700 4550 4700 4900
+Wire Wire Line
+	2750 2300 2500 2300
+Wire Wire Line
+	2750 1650 2750 1250
+$Comp
+L CONN_01X03 P1
+U 1 1 589AF075
+P 1350 1350
+F 0 "P1" H 1350 1550 50  0000 C CNN
+F 1 "PWR" V 1450 1350 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x03_Pitch2.54mm" H 1350 1350 50  0001 C CNN
+F 3 "" H 1350 1350 50  0000 C CNN
+	1    1350 1350
+	-1   0    0    1   
+$EndComp
+Text Label 1550 1250 0    60   ~ 0
+pwr
+Text Label 1550 1450 0    60   ~ 0
+gnd
+Text Label 4400 4750 3    60   ~ 0
+SER
+Text Label 4500 4750 3    60   ~ 0
+Qh
+Text Label 4600 4750 3    60   ~ 0
+CLK
+Text Label 4700 4650 3    60   ~ 0
+SH/LD
+$Comp
+L Q_NPN_CBE Q1
+U 1 1 589BDFCA
+P 2150 1900
+F 0 "Q1" H 2350 1950 50  0000 L CNN
+F 1 "BC817-40" H 2350 1850 50  0000 L CNN
+F 2 "TO_SOT_Packages_THT:TO-92_Inline_Wide" H 2350 2000 50  0001 C CNN
+F 3 "" H 2150 1900 50  0000 C CNN
+	1    2150 1900
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3200 2300 3200 1350
+Connection ~ 3200 1350
+Wire Wire Line
+	4000 2300 4000 1350
+Connection ~ 4000 1350
+Wire Wire Line
+	4800 2300 4800 1350
+Connection ~ 4800 1350
+Wire Wire Line
+	5600 2300 5600 1350
+Connection ~ 5600 1350
+Wire Wire Line
+	6400 2300 6400 1350
+Connection ~ 6400 1350
+Wire Wire Line
+	8800 1350 8800 2300
+Connection ~ 8500 1350
+Wire Wire Line
+	8000 2300 8000 1350
+Connection ~ 8000 1350
+Wire Wire Line
+	7200 2300 7200 1350
+Connection ~ 7200 1350
+Wire Wire Line
+	1550 1450 1950 1450
+$EndSCHEMATC
