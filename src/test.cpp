@@ -21,8 +21,8 @@ void loop()
 {
   delay(1000);
   digitalWrite(REG_LATCH, LOW);
-  uint8_t data = SPI.transfer(0);
   digitalWrite(REG_LATCH, HIGH);
+  uint8_t data = SPI.transfer(0);
 
   if (data != lastData) {
     Serial.println((int)data);
