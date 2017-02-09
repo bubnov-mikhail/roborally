@@ -474,14 +474,14 @@ Wire Wire Line
 	1700 4300 4300 4300
 Connection ~ 1700 1250
 $Comp
-L CONN_01X04 P2
+L CONN_01X05 P2
 U 1 1 589B659E
-P 4550 5100
-F 0 "P2" H 4550 5350 50  0000 C CNN
-F 1 "DATA" V 4650 5100 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x04_Pitch2.54mm" H 4550 5100 50  0001 C CNN
-F 3 "" H 4550 5100 50  0000 C CNN
-	1    4550 5100
+P 4500 5100
+F 0 "P2" H 4500 5350 50  0000 C CNN
+F 1 "DATA" V 4600 5100 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x05_Pitch2.54mm" H 4500 5100 50  0001 C CNN
+F 3 "" H 4500 5100 50  0000 C CNN
+	1    4500 5100
 	0    1    1    0   
 $EndComp
 NoConn ~ 4700 4300
@@ -569,4 +569,11 @@ Wire Wire Line
 Connection ~ 7200 1350
 Wire Wire Line
 	1550 1450 1950 1450
+Wire Wire Line
+	4300 4900 4300 4550
+Wire Wire Line
+	4300 4550 1600 4550
+Wire Wire Line
+	1600 4550 1600 1450
+Connection ~ 1600 1450
 $EndSCHEMATC
