@@ -1,0 +1,345 @@
+EESchema Schematic File Version 2
+LIBS:power
+LIBS:device
+LIBS:switches
+LIBS:relays
+LIBS:motors
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:2ButtonsReaderWithInterrupt-cache
+EELAYER 25 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Conn_01x02 J3
+U 1 1 59CFE8EF
+P 1650 2800
+F 0 "J3" H 1650 2900 50  0000 C CNN
+F 1 "Btn in" H 1650 2600 50  0000 C CNN
+F 2 "Socket_Strips:Socket_Strip_Straight_1x02_Pitch2.54mm" H 1650 2800 50  0001 C CNN
+F 3 "" H 1650 2800 50  0001 C CNN
+	1    1650 2800
+	-1   0    0    1   
+$EndComp
+$Comp
+L Conn_01x02 J2
+U 1 1 59CFEA50
+P 1650 2400
+F 0 "J2" H 1650 2500 50  0000 C CNN
+F 1 "Btn out" H 1650 2200 50  0000 C CNN
+F 2 "Socket_Strips:Socket_Strip_Straight_1x02_Pitch2.54mm" H 1650 2400 50  0001 C CNN
+F 3 "" H 1650 2400 50  0001 C CNN
+	1    1650 2400
+	-1   0    0    1   
+$EndComp
+$Comp
+L R R1
+U 1 1 59CFEA94
+P 2250 2700
+F 0 "R1" V 2150 2700 50  0000 C CNN
+F 1 "R10k" V 2250 2700 50  0000 C CNN
+F 2 "Resistors_THT:R_Box_L13.0mm_W4.0mm_P9.00mm" V 2180 2700 50  0001 C CNN
+F 3 "" H 2250 2700 50  0001 C CNN
+	1    2250 2700
+	0    1    1    0   
+$EndComp
+$Comp
+L R R2
+U 1 1 59CFEADA
+P 2250 2800
+F 0 "R2" V 2330 2800 50  0000 C CNN
+F 1 "R10k" V 2250 2800 50  0000 C CNN
+F 2 "Resistors_THT:R_Box_L13.0mm_W4.0mm_P9.00mm" V 2180 2800 50  0001 C CNN
+F 3 "" H 2250 2800 50  0001 C CNN
+	1    2250 2800
+	0    1    1    0   
+$EndComp
+$Comp
+L R R3
+U 1 1 59CFEC0D
+P 2250 3200
+F 0 "R3" V 2150 3200 50  0000 C CNN
+F 1 "R220" V 2250 3200 50  0000 C CNN
+F 2 "Resistors_THT:R_Box_L13.0mm_W4.0mm_P9.00mm" V 2180 3200 50  0001 C CNN
+F 3 "" H 2250 3200 50  0001 C CNN
+	1    2250 3200
+	0    1    1    0   
+$EndComp
+$Comp
+L R R4
+U 1 1 59CFEC55
+P 2250 3300
+F 0 "R4" V 2330 3300 50  0000 C CNN
+F 1 "R220" V 2250 3300 50  0000 C CNN
+F 2 "Resistors_THT:R_Box_L13.0mm_W4.0mm_P9.00mm" V 2180 3300 50  0001 C CNN
+F 3 "" H 2250 3300 50  0001 C CNN
+	1    2250 3300
+	0    1    1    0   
+$EndComp
+$Comp
+L CP1 C2
+U 1 1 59CFED83
+P 2550 3450
+F 0 "C2" H 2575 3550 50  0000 L CNN
+F 1 "C2.2" H 2575 3350 50  0000 L CNN
+F 2 "Capacitors_THT:CP_Radial_D5.0mm_P2.00mm" H 2550 3450 50  0001 C CNN
+F 3 "" H 2550 3450 50  0001 C CNN
+	1    2550 3450
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R R5
+U 1 1 59CFFE0D
+P 2250 4250
+F 0 "R5" V 2150 4250 50  0000 C CNN
+F 1 "R220" V 2250 4250 50  0000 C CNN
+F 2 "Resistors_THT:R_Box_L13.0mm_W4.0mm_P9.00mm" V 2180 4250 50  0001 C CNN
+F 3 "" H 2250 4250 50  0001 C CNN
+	1    2250 4250
+	0    1    1    0   
+$EndComp
+$Comp
+L R R6
+U 1 1 59CFFE13
+P 2250 4350
+F 0 "R6" V 2330 4350 50  0000 C CNN
+F 1 "R220" V 2250 4350 50  0000 C CNN
+F 2 "Resistors_THT:R_Box_L13.0mm_W4.0mm_P9.00mm" V 2180 4350 50  0001 C CNN
+F 3 "" H 2250 4350 50  0001 C CNN
+	1    2250 4350
+	0    1    1    0   
+$EndComp
+$Comp
+L CP1 C4
+U 1 1 59CFFE23
+P 2550 4500
+F 0 "C4" H 2575 4600 50  0000 L CNN
+F 1 "C2.2" H 2575 4400 50  0000 L CNN
+F 2 "Capacitors_THT:CP_Radial_D5.0mm_P2.00mm" H 2550 4500 50  0001 C CNN
+F 3 "" H 2550 4500 50  0001 C CNN
+	1    2550 4500
+	0    -1   -1   0   
+$EndComp
+Text Notes 7350 7500 0    60   ~ 0
+2 buttons reader with 1 interrupt channel
+$Comp
+L R R7
+U 1 1 59D01B2A
+P 4050 3300
+F 0 "R7" V 3950 3300 50  0000 C CNN
+F 1 "R10k" V 4050 3300 50  0000 C CNN
+F 2 "Resistors_THT:R_Box_L13.0mm_W4.0mm_P9.00mm" V 3980 3300 50  0001 C CNN
+F 3 "" H 4050 3300 50  0001 C CNN
+	1    4050 3300
+	-1   0    0    1   
+$EndComp
+$Comp
+L D D1
+U 1 1 59D01C41
+P 4200 3450
+F 0 "D1" H 4200 3550 50  0000 C CNN
+F 1 "D" H 4200 3350 50  0000 C CNN
+F 2 "Diodes_THT:D_DO-41_SOD81_P10.16mm_Horizontal" H 4200 3450 50  0001 C CNN
+F 3 "" H 4200 3450 50  0001 C CNN
+	1    4200 3450
+	-1   0    0    1   
+$EndComp
+$Comp
+L Conn_01x01 J4
+U 1 1 59D01D48
+P 4550 3750
+F 0 "J4" H 4550 3850 50  0000 C CNN
+F 1 "Interrupt" H 4550 3650 50  0000 C CNN
+F 2 "Socket_Strips:Socket_Strip_Straight_1x01_Pitch2.54mm" H 4550 3750 50  0001 C CNN
+F 3 "" H 4550 3750 50  0001 C CNN
+	1    4550 3750
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R8
+U 1 1 59D0238E
+P 4050 4250
+F 0 "R8" V 3950 4250 50  0000 C CNN
+F 1 "R10k" V 4050 4250 50  0000 C CNN
+F 2 "Resistors_THT:R_Box_L13.0mm_W4.0mm_P9.00mm" V 3980 4250 50  0001 C CNN
+F 3 "" H 4050 4250 50  0001 C CNN
+	1    4050 4250
+	-1   0    0    1   
+$EndComp
+$Comp
+L D D2
+U 1 1 59D02478
+P 4200 4400
+F 0 "D2" H 4200 4500 50  0000 C CNN
+F 1 "D" H 4200 4300 50  0000 C CNN
+F 2 "Diodes_THT:D_DO-41_SOD81_P10.16mm_Horizontal" H 4200 4400 50  0001 C CNN
+F 3 "" H 4200 4400 50  0001 C CNN
+	1    4200 4400
+	-1   0    0    1   
+$EndComp
+$Comp
+L Conn_01x02 J1
+U 1 1 59D0048D
+P 1650 2000
+F 0 "J1" H 1650 2100 50  0000 C CNN
+F 1 "PWR" H 1650 1800 50  0000 C CNN
+F 2 "Socket_Strips:Socket_Strip_Straight_1x02_Pitch2.54mm" H 1650 2000 50  0001 C CNN
+F 3 "" H 1650 2000 50  0001 C CNN
+	1    1650 2000
+	-1   0    0    1   
+$EndComp
+$Comp
+L LM393 U1
+U 1 1 59D04D9B
+P 3750 3450
+F 0 "U1" H 3900 3600 50  0000 C CNN
+F 1 "LM393" H 4000 3300 50  0000 C CNN
+F 2 "Housings_DIP:DIP-8_W7.62mm" H 3750 3450 50  0001 C CNN
+F 3 "" H 3750 3450 50  0001 C CNN
+	1    3750 3450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1850 2700 2100 2700
+Wire Wire Line
+	1850 2800 2100 2800
+Connection ~ 2400 2700
+Wire Wire Line
+	2100 2700 2100 2300
+Wire Wire Line
+	2100 2300 1850 2300
+Wire Wire Line
+	1850 2400 2000 2400
+Wire Wire Line
+	2000 2400 2000 3300
+Connection ~ 2000 2800
+Wire Wire Line
+	2000 3300 2100 3300
+Wire Wire Line
+	2000 3200 2100 3200
+Connection ~ 2000 3200
+Wire Wire Line
+	2400 3300 2400 3450
+Wire Wire Line
+	2700 2400 2400 2400
+Connection ~ 2400 2400
+Wire Wire Line
+	2000 3900 2000 4350
+Wire Wire Line
+	2000 4350 2100 4350
+Wire Wire Line
+	2100 4250 2000 4250
+Connection ~ 2000 4250
+Wire Wire Line
+	2400 4350 2400 4500
+Wire Wire Line
+	1900 2700 1900 3900
+Wire Wire Line
+	1900 3900 2000 3900
+Connection ~ 1900 2700
+Wire Wire Line
+	2700 1900 2700 2250
+Wire Wire Line
+	2700 2250 3650 2250
+Wire Wire Line
+	2400 3200 3450 3200
+Wire Wire Line
+	2400 3300 3300 3300
+Wire Wire Line
+	2400 4250 3300 4250
+Wire Wire Line
+	2400 2000 2400 2800
+Wire Wire Line
+	2400 2000 1850 2000
+Wire Wire Line
+	2700 1900 1850 1900
+Wire Wire Line
+	4350 3450 4350 4400
+Connection ~ 4350 3750
+Wire Wire Line
+	2700 2400 2700 4700
+Connection ~ 2700 3450
+Wire Wire Line
+	3450 3200 3450 3350
+Wire Wire Line
+	3300 3300 3300 3550
+Wire Wire Line
+	3300 3550 3450 3550
+Wire Wire Line
+	3650 2250 3650 3150
+Wire Wire Line
+	4050 2950 4050 3150
+Wire Wire Line
+	3100 2950 4050 2950
+Connection ~ 3650 2950
+$Comp
+L LM393 U1
+U 2 1 59D05C02
+P 3750 4400
+F 0 "U1" H 3900 4550 50  0000 C CNN
+F 1 "LM393" H 4000 4250 50  0000 C CNN
+F 2 "Housings_DIP:DIP-8_W7.62mm" H 3750 4400 50  0001 C CNN
+F 3 "" H 3750 4400 50  0001 C CNN
+	2    3750 4400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3300 4250 3300 4300
+Wire Wire Line
+	3300 4300 3450 4300
+Wire Wire Line
+	2400 4350 3200 4350
+Wire Wire Line
+	3200 4350 3200 4500
+Wire Wire Line
+	3200 4500 3450 4500
+Wire Wire Line
+	3650 3750 2700 3750
+Connection ~ 2700 3750
+Wire Wire Line
+	2700 4700 3650 4700
+Connection ~ 2700 4500
+Connection ~ 3650 4100
+Wire Wire Line
+	4050 4100 4050 4000
+Wire Wire Line
+	4050 4000 3100 4000
+Wire Wire Line
+	3100 4000 3100 2950
+$EndSCHEMATC
