@@ -286,11 +286,9 @@ Wire Wire Line
 Wire Wire Line
 	2400 2000 2400 2800
 Wire Wire Line
-	2400 2000 1850 2000
+	1850 2000 4850 2000
 Wire Wire Line
 	2700 1900 1850 1900
-Wire Wire Line
-	4350 3450 4350 4400
 Connection ~ 4350 3750
 Wire Wire Line
 	2700 2400 2700 4700
@@ -342,4 +340,23 @@ Wire Wire Line
 	4050 4000 3100 4000
 Wire Wire Line
 	3100 4000 3100 2950
+$Comp
+L R R9
+U 1 1 59DE55FE
+P 4500 4150
+F 0 "R9" V 4400 4150 50  0000 C CNN
+F 1 "R10k" V 4500 4150 50  0000 C CNN
+F 2 "Resistors_THT:R_Box_L13.0mm_W4.0mm_P9.00mm" V 4430 4150 50  0001 C CNN
+F 3 "" H 4500 4150 50  0001 C CNN
+	1    4500 4150
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	4650 4150 4850 4150
+Wire Wire Line
+	4850 4150 4850 2000
+Connection ~ 2400 2000
+Wire Wire Line
+	4350 3450 4350 4400
+Connection ~ 4350 4150
 $EndSCHEMATC
