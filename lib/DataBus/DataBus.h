@@ -1,7 +1,9 @@
+#pragma once
+
 /*
 * Class for selecting and transferring data to/from
 * up to 8 devices (each with 2 input and 2 output shift registers)
-* Data to be transferred must be of type "short"
+* Data to be transferred must be of type "uint16_t" or "short"
 * Class uses default SPI pins (SCLK, MOSI, MISO)
 * Attr "deviceNumber" should start from 0
 */
