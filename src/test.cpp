@@ -8,12 +8,13 @@ const byte latchPin = 8;
 const byte buttonAPin = 2;
 const byte buttonBPin = 4;
 const byte interruptPin = 3;
-const String buttonAStateMsg = "Button A: ";
-const String buttonBStateMsg = "Button B: ";
+const String buttonAStateMsg = "A: ";
+const String buttonBStateMsg = " B: ";
 const String impulseLengthMsg = "Delay: ";
 
 LiquidCrystal lcd(13, 12, 11, 10,  9,  8);
 uint8_t lastData = 0;
+volatile uint8_t interrupts = 0;
 
 void setup()
 {
@@ -26,7 +27,7 @@ void setup()
   pinMode(buttonAPin, INPUT);
   pinMode(buttonBPin, INPUT);
   pinMode(interruptPin, INPUT);
-  attachInterrupt(digitalPinToInterrupt(interruptPin), onInterrupt, CHANGE);
+  attachInterrupt(digitalPinToInterrupt(interruptPin), onInterrupt, RISING);
 
   //SPI.begin();
   /* Включаем защёлку */
@@ -53,11 +54,11 @@ void onInterrupt()
   bool buttonAState = digitalRead(buttonAPin);
   bool buttonBState = digitalRead(buttonBPin);
   bool interruptState = digitalRead(interruptPin);
-
+  interrupts++;
   if (interruptState) {
     lcd.setCursor(0, 0);
-    lcd.print(buttonAStateMsg + buttonAState);
+    lcd.print(buttonAStateMsg + buttonAState + buttonBStateMsg + buttonBState);
     lcd.setCursor(0, 1);
-    lcd.print(buttonBStateMsg + buttonBState);
+    lcd.print(interrupts);
   }
 }
