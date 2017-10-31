@@ -1,10 +1,7 @@
 #include <Arduino.h>
-//#include <Print.h>
 #include <test.h>
-#include <SPI.h>
 #include <LiquidCrystal.h>
 
-const byte latchPin = 8;
 const byte buttonAPin = 2;
 const byte buttonBPin = 4;
 const byte interruptPin = 3;
@@ -13,7 +10,6 @@ const String buttonBStateMsg = " B: ";
 const String impulseLengthMsg = "Delay: ";
 
 LiquidCrystal lcd(13, 12, 11, 10,  9,  8);
-uint8_t lastData = 0;
 volatile uint8_t interrupts = 0;
 
 void setup()
@@ -28,25 +24,10 @@ void setup()
   pinMode(buttonBPin, INPUT);
   pinMode(interruptPin, INPUT);
   attachInterrupt(digitalPinToInterrupt(interruptPin), onInterrupt, RISING);
-
-  //SPI.begin();
-  /* Включаем защёлку */
-  //pinMode(latchPin, OUTPUT);
-  //digitalWrite(latchPin, HIGH);
 }
 
 void loop()
 {
-  // delay(1000);
-  // digitalWrite(latchPin, LOW);
-  // uint8_t data = SPI.transfer(0);
-  // digitalWrite(latchPin, HIGH);
-  // if (data != lastData) {
-  //   Serial.println((int)data);
-  //   Serial.println(data, BIN);
-  //   Serial.println("");
-  //   lastData = data;
-  // }
 }
 
 void onInterrupt()
