@@ -8,56 +8,57 @@ DataBus::DataBus(uint8_t _busCsPin, uint8_t _interruptNumber)
 
 void DataBus::begin()
 {
+    pinMode(busCsPin, OUTPUT);
+    digitalWrite(busCsPin, HIGH);
     SPI.begin();
     SPI.usingInterrupt(interruptNumber);
-    pinMode(busCsPin, OUTPUT);
-    resetDevices();
+    unselectAll();
 }
 
-uint16_t DataBus::getDeviceData(uint8_t deviceNumber)
+void DataBus::end()
 {
-    // There is a reading operation - we must only trigger latch low and high
-    select(deviceNumber, true);
-    resetDevices();
-
-    return transferData(0, false);
+    SPI.end();
 }
 
-void DataBus::sendDeviceData(uint8_t deviceNumber, uint16_t data)
+/**
+ * @param uint8_t DeviceNumber Device number starting with 0 for the first device
+ * @param uint8_t Data Data to Send
+ * @return uint8_t Data from the device
+ */
+uint8_t DataBus::transferDataToDevice(uint8_t data, uint8_t deviceNumber)
 {
-    select(deviceNumber, false);
-    transferData(data, false);
+    select(deviceNumber);
+    uint8_t receivedData = transferData(data, false);
+    unselectAll();
+
+    return receivedData;
 }
 
-void DataBus::resetDevices()
+void DataBus::unselectAll()
 {
-    uint16_t resetData = 0xFFFF;
-    transferData(resetData, true);
+    transferData(0x00, true);
 }
 
-void DataBus::select(uint8_t deviceNumber, bool forRead)
+/**
+ * @param uint8_t DeviceNumber Device number starting with 0 for the first device
+ */
+void DataBus::select(uint8_t deviceNumber)
 {
-    deviceNumber += (forRead)
-        ? 1
-        : 0
-    ;
-    uint16_t select = 0xFFFF;
-    bitClear(select, deviceNumber);
+    uint8_t select = 0x00;
+    select = 1 << deviceNumber;
     transferData(select, true);
 }
 
-uint16_t DataBus::transferData(uint16_t data, bool toBusCs)
+uint8_t DataBus::transferData(uint8_t data, bool toBusCs)
 {
-    SPI.beginTransaction (SPISettings(2000000, MSBFIRST, SPI_MODE0));
     if (toBusCs) {
         digitalWrite(busCsPin, LOW);
+        delayMicroseconds(120); //We need this delay for 2andNot chip has a time to switch his outputs
     }
-    uint16_t receivedData = SPI.transfer16(data);
-
+    uint8_t receivedData = SPI.transfer(data);
     if (toBusCs) {
         digitalWrite(busCsPin, HIGH);
     }
-    SPI.endTransaction();
 
     return receivedData;
 }
